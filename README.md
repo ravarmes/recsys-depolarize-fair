@@ -2,47 +2,33 @@
   RecSys-Depolarize-Fair
 </h3>
 
-<p align="center">Elaboração de uma Estratégia de Despolarização e Justiça Individual em Sistemas de Recomendação. </p>
+<p align="center">FaDeRS: Fairness and Depolarization in Recommender Systems</p>
 
-<p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ravarmes/recsys-depolarize-fair?color=%2304D361">
+## :page_with_curl: About the project <a name="-sobre"/></a>
 
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
+Context: Recommender systems have become fundamental in modern society as they help navigate the vast amount of available data, enabling users to find information, products, or services more efficiently and personally. They directly impact how people consume data, goods, and resources. Problem: Recommender systems often lack fairness and diversity, resulting in unfair services and increased preference polarization. Solution: This work presents FaDeRS (Fairness and Depolarization in Recommender Systems), an approach aimed at increasing fairness and diversity in recommender systems. FaDeRS adjusts predictions through controlled perturbations and optimization to mitigate individual unfairness and polarization without modifying the input data. IS Theory: The research is related to socio-technical theory, addressing one of the socio-algorithmic problems, algorithmic discrimination. We consider a specific set of approaches to encode fair behaviors. Method: The research applied a quantitative method with experimentation using two datasets in distinct contexts, implementing a post-processing algorithm based on the Simulated Annealing meta-heuristic. Summary of Results: The proposed framework demonstrated significant reductions in polarization (up to 78.64\%) and individual unfairness (up to 33.97\%), with only a small increase in the Root Mean Square Error (RMSE), indicating an improvement in the socially desirable qualities of the systems without unduly sacrificing accuracy. Contributions and Impact in the IS field: The main contribution is a mechanism that balances personalization and fairness, simultaneously addressing polarization and individual unfairness from the items' perspective, promoting a fairer and more diverse approach to recommendation.
 
-  <a href="https://github.com/ravarmes/recsys-depolarize-fair/stargazers">
-    <img alt="Stargazers" src="https://img.shields.io/github/stars/ravarmes/recsys-depolarize-fair?style=social">
-  </a>
-</p>
+### :balance_scale: Fairness Measures <a name="-medidas"/></a>
 
-## :page_with_curl: Sobre o projeto <a name="-sobre"/></a>
+* **Polarization**: To capture polarization, we seek to measure the extent to which user ratings disagree. Thus, to measure user polarization, we consider the estimated ratings `$\hat{X}$`, and define the polarization metric as the normalized sum of the Euclidean distances between pairs of estimated user ratings, that is, between rows of `$\hat{X}$`.
 
-Sistemas de recomendação são essenciais para ajudar os usuários a encontrar conteúdo relevante, mas enfrentam desafios como bolhas de filtro e justiça individual de itens. Bolhas de filtro limitam a exposição a informações diversas, e a injustiça impede a recomendação equitativa de itens menos populares. Este artigo apresenta o RecSys-Depolarize-Fair, uma estrutura para reduzir a polarização e promover recomendações justas, utilizando métricas de polarização e justiça para os itens. Experimentos mostram que o algoritmo reduz efetivamente a polarização e equilibra as recomendações sem afetar significativamente a precisão. 
+* **Individual fairness**: For each item `$j$`, we define `$\ell_j$`, the loss of item `$j$`, as the mean squared error of the estimate over the known ratings of item `$j$`.
 
-### :balance_scale: Medidas de Justiça <a name="-medidas"/></a>
+### :chart_with_upwards_trend: Results <a name="-resultados"/></a>
 
-* **Polarization (Polarização)**: Para capturar a polarização, buscamos medir a extensão na qual as avaliações dos usuários discordam. Assim, para medir a polarização dos usuários, consideramos as avaliações estimadas `$\hat{X}$`, e definimos a métrica de polarização como a soma normalizada das distâncias euclidianas entre pares de avaliações estimadas de usuários, isto é, entre linhas de `$\hat{X}$`.
+[Link to the Excel file](https://github.com/ravarmes/recsys-depolarize-fair/blob/main/_results-article.xlsx)
 
-* **Individual fairness (Justiça Individual)**: Para cada item `$j$`, definimos `$\ell_j$`, a perda do item `$j$`, como o erro quadrático médio da estimativa sobre as avaliações conhecidas do item `$j$`.
+### Files
 
-
-### :chart_with_upwards_trend: Resultados(s) <a name="-resultados"/></a>
-
-[Link para o arquivo Excel](https://github.com/ravarmes/recsys-depolarize-fair/blob/main/_results-article.xlsx)
-
-
-### Arquivos
-
-| Arquivo                               | Descrição                                                                                                                                                                                                                                   |
-|--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| AlgorithmDepolarizeFair                | Classe para implementar justiça e despolarização das recomendações de algoritmos de sistemas de recomendação.                                                                                               |
-| AlgorithmUserFairness                | Classes para medir a justiça (polarização, justiça individual e justiça do grupo) das recomendações de algoritmos de sistemas de recomendação.                                                                                               |
-| RecSys                               | Classe no padrão fábrica para instanciar um sistema de recomendação com base em parâmetros string.                                                                                                                                           |
-| RecSysALS                            | Alternating Least Squares (ALS) para Filtragem Colaborativa é um algoritmo que otimiza iterativamente duas matrizes para melhor prever avaliações de usuários em itens, baseando-se na ideia de fatoração de matrizes.                       |
-| RecSysKNN                            | K-Nearest Neighbors para Sistemas de Recomendação é um método que recomenda itens ou usuários baseando-se na proximidade ou similaridade entre eles, utilizando a técnica dos K vizinhos mais próximos.                                      |
-| RecSysNMF                            | Non-Negative Matrix Factorization para Sistemas de Recomendação utiliza a decomposição de uma matriz de avaliações em duas matrizes de fatores não-negativos, revelando padrões latentes que podem ser usados para prever avaliações faltantes. |
-| RecSysSGD                            | Stochastic Gradient Descent para Sistemas de Recomendação é uma técnica de otimização que ajusta iterativamente os parâmetros do modelo para minimizar o erro nas previsões de avaliações, através de atualizações baseadas em gradientes calculados de forma estocástica. |
-| RecSysSVD                            | Singular Value Decomposition para Sistemas de Recomendação é um método que fatora a matriz de avaliações em três matrizes menores, capturando informações essenciais sobre usuários e itens, o que facilita a recomendação através da reconstrução da matriz original com dados faltantes preenchidos. |
-| RecSysNCF                            | Neural Collaborative Filtering é uma abordagem moderna para filtragem colaborativa que utiliza redes neurais para modelar interações complexas e não-lineares entre usuários e itens, visando aprimorar a qualidade das recomendações.          |
-| TestAlgorithmDepolarizeFair        | Script de teste do algoritmo de despolarização e justiça (AlgorithmDepolarizeFair) |
-
----
+| File                                 | Description                                                                                                                                                                                                                                         |
+|--------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AlgorithmDepolarizeFair             | Class to implement fairness and depolarization of recommendations from recommendation system algorithms.                                                                                                                                           |
+| AlgorithmUserFairness               | Classes to measure fairness (polarization, individual fairness, and group fairness) of recommendations from recommendation system algorithms.                                                                                                         |
+| RecSys                               | Factory pattern class to instantiate a recommendation system based on string parameters.                                                                                                                                                           |
+| RecSysALS                            | Alternating Least Squares (ALS) for Collaborative Filtering is an algorithm that iteratively optimizes two matrices to better predict user ratings on items, based on the idea of matrix factorization.                                              |
+| RecSysKNN                            | K-Nearest Neighbors for Recommendation Systems is a method that recommends items or users based on the proximity or similarity between them, using the technique of the K nearest neighbors.                                                          |
+| RecSysNMF                            | Non-Negative Matrix Factorization for Recommendation Systems uses the decomposition of a ratings matrix into two non-negative factor matrices, revealing latent patterns that can be used to predict missing ratings.                               |
+| RecSysSGD                            | Stochastic Gradient Descent for Recommendation Systems is an optimization technique that iteratively adjusts the model parameters to minimize prediction error in ratings, through updates based on gradients calculated stochastically.            |
+| RecSysSVD                            | Singular Value Decomposition for Recommendation Systems is a method that factors the ratings matrix into three smaller matrices, capturing essential information about users and items, which facilitates recommendations by reconstructing the original matrix with missing data filled in. |
+| RecSysNCF                            | Neural Collaborative Filtering is a modern approach to collaborative filtering that uses neural networks to model complex, nonlinear interactions between users and items, aiming to enhance recommendation quality.                                    |
+| TestAlgorithmDepolarizeFair         | Test script for the depolarization and fairness algorithm (AlgorithmDepolarizeFair) |
